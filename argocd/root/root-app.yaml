@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: http://host.docker.internal:8000
+    repoURL: https://github.com/lukas8219/argocd-apps-of-apps-poc.git
     targetRevision: HEAD
-    path: argocd/root
+    path: argocd/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
