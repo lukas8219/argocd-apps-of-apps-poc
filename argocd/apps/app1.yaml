@@ -9,15 +9,6 @@ spec:
     repoURL: https://charts.fairwinds.com/stable
     targetRevision: 1.x.x
     chart: rbac-manager
-    helm:
-      values: |
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 100m
-            memory: 128Mi
   destination:
     server: https://kubernetes.default.svc
     namespace: rbac-system
