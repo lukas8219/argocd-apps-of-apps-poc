@@ -1,19 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1
+  name: rbac-manager
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: http://host.docker.internal:8000/app1  # Points to local Python HTTP server
-    targetRevision: HEAD
-    directory:
-      recurse: true
+    repoURL: https://charts.fairwinds.com/stable
+    targetRevision: 1.x.x
+    chart: rbac-manager
+    helm:
+      values: |
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
   destination:
     server: https://kubernetes.default.svc
-    namespace: app1
+    namespace: rbac-system
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true 
+      selfHeal: true
